@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI計算器</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 微軟正黑體;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            height: 60px;
+            background-color: rgb(177, 214, 231);
+        }
+
+        h1 {
+            margin: 0;
+            text-align: center;
+            line-height: 2;
+            color: rgb(59, 58, 58);
+        }
+
+        h2 {
+            color: rgb(59, 58, 58);
+        }
+
+        .bmi-img {
+            width: 100%;
+            height: 250px;
+            margin: 0 auto;
+            background-size: cover;
+            background-position: center;
+            border-radius: 0px 0px 50px 50px;
+            background-image: url(./img/bmi-body-mass-index-banner-web-icon-vector-27901253.jpg);
+        }
+
+        .bmi-box {
+            border: solid 2px rgb(27, 54, 66);
+            width: 95%;
+            height: 500px;
+            border-radius: 40px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            box-shadow: 0 0 1px 1px rgb(27, 54, 66);
+        }
+
+        .app {
+            display: flex;
+            flex-flow: column;
+        }
+
+        .inputp {
+            font-size: 19px;
+            margin-bottom: 2px;
+        }
+
+        input {
+            width: 100%;
+            height: 35px;
+            border-radius: 5px;
+            padding-left: 5px;
+        }
+
+
+        .calculatebtns {
+            margin: 18px;
+            text-align: center;
+        }
+
+        .btn {
+            width: 100px;
+            height: 40px;
+            font-size: 18px;
+            background-color: #5E93A8;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            opacity: 1;
+        }
+
+        .calculatebtn {
+            background-color: rgb(27, 54, 66);
+        }
+
+        .calculatebtn:hover {
+            opacity: 0.8;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 24px;
+            margin: 0;
+            color: rgb(59, 58, 58);
+        }
+
+        .bmiFE {
+            margin: 0 auto;
+        }
+
+        h4 {
+            text-align: center;
+            font-size: 20px;
+            color: rgb(59, 58, 58);
+        }
+
+        ul {
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        li {
+            width: 95%;
+            border: solid 1px rgb(177, 214, 231);
+            border-radius: 10px;
+            margin-bottom: 4px;
+            padding: 5px 13px;
+            box-shadow: 0 0 1px 1px rgb(177, 214, 231);
+        }
+
+        h5,
+        .h5p {
+            margin: 0;
+        }
+
+        h5 {
+            font-size: 18px;
+        }
+
+        .h5p {
+            color: rgb(68, 67, 67);
+            font-weight: 500;
+        }
+
+        .bluep {
+            color: rgb(54, 50, 105);
+            font-size: 18px;
+        }
+
+        .resultbox {
+            text-align: center;
+        }
+
+        #resultborder {
+            display: none;
+            margin: 8px auto;
+            text-align: center;
+            width: 300px;
+            height: 50px;
+            border: solid 2px rgb(189, 189, 48);
+            border-radius: 10px;
+        }
+        .show {
+            display: block;
+        }
+
+        #bmi ,#result {
+            margin: 10px;
+            font-size: 20px;
+            color: rgb(27, 54, 66);
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header class="container nav-bar">
+        <h1>BMI計算器</h1>
+    </header>
+    <main>
+        <section class="container headerpage">
+            <div class="bmi-img"></div>
+            <div class="bmi-box">
+                <h2>身體質量指數 (BMI) 計算器</h2>
+                <p>世界衛生組織建議以身體質量指數 (Body Mass Index, BMI) 來衡量肥胖程度，其計算公式是以體重 (公斤) 除以身高 (公尺) 的平方。</p>
+                <div class="app">
+                    <div class="calculate">
+                        <div class="calculatenumber">
+                            <p class="inputp">身高(公分)</p>
+                            <input type="number" id="bodyheight" placeholder="請輸入身高">
+                            <p class="inputp">體重(公斤)</p>
+                            <input type="number" id="bodyweight" placeholder="請輸入體重">
+                        </div>
+                        <div class="calculatebtns">
+                            <button class="btn calculatebtn" id="calc">開始計算</button>
+                            <button id="reset" class="btn clearbtn">清除重算</button>
+                        </div>
+                    </div>
+                    <div class="resultbox">
+                        <h3>測量結果</h3>
+                        <div id="resultborder">
+                            <p id="bmi"></p>
+                            <p id="result"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container bmiFE">
+            <h4>來看看什麼是理想範圍吧！</h4>
+            <ul>
+                <li>
+                    <h5>BMI < 18.5 </h5>
+                            <p class="h5p"><span class="bluep">“體重過輕“</span>，需要多運動哦~ 均衡飲食，多吃一點維持健康。</p>
+                </li>
+                <li>
+                    <h5>18.5 ≤ BMI < 24 </h5>
+                            <p class="h5p">恭喜！<span class="bluep">“健康體重“</span>要繼續保持哦~ </p>
+                </li>
+                <li>
+                    <h5>24 ≤ BMI < 27 </h5>
+                            <p class="h5p"><span class="bluep">“體重過重“</span>了，要小心囉，趕快運動起來吧！ </p>
+                </li>
+                <li>
+                    <h5>BMI ≥ 27 </h5>
+                    <p class="h5p">啊~ <span class="bluep">“體重超重“</span>，少吃一點，趕快起來運動了！ </p>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+
+    <script>
+
+        var bodyheightElement = document.querySelector("#bodyheight")
+        var bodyweightElement = document.querySelector("#bodyweight")
+        var resultElement = document.querySelector("#result")
+        var calcElement = document.querySelector("#calc")
+        var resetElement = document.querySelector("#reset")
+        var resultbordeElemet = document.querySelector('#resultborder')
+
+        calcElement.addEventListener("click", function () {
+            var bodyheight = Number(bodyheightElement.value)/100;
+            var bodyweight = Number(bodyweightElement.value);
+            var bmi = Math.round (bodyweight / bodyheight ** 2 *100)/ 100 ;
+            var result = '';
+            if (bmi < 18.5){
+                result= ' 體重過輕';
+            }else if(bmi < 24){
+                result = ' 健康體重';
+            }else if(bmi < 27){
+                result = ' 體重過重';
+            }else {
+                result = ' 體重超重';
+            }
+
+            resultElement.textContent = bmi + result;
+            
+            resultborder.style.display = "block";
+            
+
+
+        });
+        resetElement.addEventListener('click',function(){
+            bodyheightElement.value = '';
+            bodyweightElement.value = '';
+            resultElement.textContent = '';
+
+            resultborder.style.display = "none";
+        });
+
+
+    </script>
+</body>
+
+</html>
